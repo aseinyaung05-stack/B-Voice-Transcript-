@@ -18,23 +18,10 @@ export function decode(base64: string): Uint8Array {
   return bytes;
 }
 
-export async function blobToBase64(blob: Blob): Promise<string> {
-  return new Promise((resolve, reject) => {
-    const reader = new FileReader();
-    reader.onloadend = () => {
-      const base64String = (reader.result as string).split(',')[1];
-      resolve(base64String);
-    };
-    reader.onerror = reject;
-    reader.readAsDataURL(blob);
-  });
-}
-
 export function createPcmBlob(data: Float32Array): { data: string; mimeType: string } {
   const l = data.length;
   const int16 = new Int16Array(l);
   for (let i = 0; i < l; i++) {
-    // Basic peak normalization or just scaling
     int16[i] = Math.max(-1, Math.min(1, data[i])) * 32767;
   }
   return {
