@@ -1,0 +1,7 @@
+{
+  "name": "Burmese Voice Scribe",
+  "description": "A high-fidelity real-time Myanmar (Burmese) speech-to-text application powered by Gemini 2.5 Flash Native Audio.",
+  "requestFramePermissions": [
+    "microphone"
+  ]
+}
